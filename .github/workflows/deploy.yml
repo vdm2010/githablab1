@@ -24,4 +24,12 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploying
-        run: echo ('${{github}} deploying..')
+        run: |
+          echo "🚀 Deploying to production..."
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Workflow: ${{ github.workflow.name }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Event: ${{ github.event_name }}"
