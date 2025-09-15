@@ -1,8 +1,20 @@
 name: Deploy
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
+      - name: Install dependecies
+        run: npm ci
+      - name: Lint project
+        run: npm run lint
+      - name: testing
+        run: npm run test
+      - name: Build
+        run: npm run build
