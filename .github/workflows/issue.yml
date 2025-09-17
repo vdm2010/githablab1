@@ -1,0 +1,24 @@
+name: Issue open
+on: 
+  issues:
+    types: [opened, edited]
+jobs:
+  getinfo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display context
+        run: |
+          echo "Env Context:"
+          echo '${{ toJSON(env) }}'
+          echo ""
+          echo "GitHub Context:"
+          echo '${{ toJSON(github) }}'
+          echo ""
+          echo "Job Context:"
+          echo '${{ toJSON(job) }}'
+          echo ""
+          echo "Steps Context:"
+          echo '${{ toJSON(steps) }}'
+          echo ""
+          echo "Runner Context:"
+          echo '${{ toJSON(runner) }}'
